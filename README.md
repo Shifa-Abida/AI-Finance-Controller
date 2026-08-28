@@ -2,9 +2,9 @@
 
 An AI-powered finance controller designed to help businesses understand their cash position and eventually forecast future cash flow using historical financial data.
 
-> 🚧 **Project Status: In Development**
+>  **Project Status: In Development**
 
-## 📌 Overview
+##  Overview
 
 The AI Finance Controller is a financial forecasting project that combines transaction data, customer/vendor payment behavior, and cash-flow information to build a system capable of predicting future cash positions.
 
@@ -12,7 +12,7 @@ The project is being developed step-by-step, starting with synthetic financial d
 
 ---
 
-## 🎯 Project Goals
+##  Project Goals
 
 The system aims to:
 
@@ -28,7 +28,7 @@ The system aims to:
 
 ---
 
-## 🏗️ Current Progress
+##  Current Progress
 
 ### Completed
 
@@ -59,7 +59,7 @@ The system aims to:
 
 ---
 
-## 🗃️ Current Dataset
+##  Current Dataset
 
 The project currently uses synthetic financial data.
 
@@ -85,7 +85,7 @@ This allows the future forecasting model to learn patterns in payment behavior.
 
 ---
 
-## 🛠️ Current Tech Stack
+##  Current Tech Stack
 
 - Python
 - Pandas
@@ -98,7 +98,7 @@ This allows the future forecasting model to learn patterns in payment behavior.
 
 ---
 
-## 📁 Project Structure
+##  Project Structure
 
 ```text
 AI-Finance-Controller/
