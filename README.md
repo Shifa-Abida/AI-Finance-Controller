@@ -1,14 +1,26 @@
 # AI Finance Controller
 
-An AI-powered finance controller designed to help businesses understand their cash position and eventually forecast future cash flow using historical financial data.
+An AI-powered finance controller designed to help businesses understand their cash position and forecast future cash flow using historical financial data.
 
 > **Project Status: In Development**
 
+---
+
 ## Overview
 
-The AI Finance Controller is a financial forecasting project that combines transaction data, customer/vendor payment behavior, and cash-flow information to build a system capable of predicting future cash positions.
+The AI Finance Controller is a financial forecasting project that combines accounts receivable (AR), accounts payable (AP), customer/vendor payment behavior, and cash-flow data.
 
-The project is being developed step-by-step, starting with synthetic financial data and a PostgreSQL database, followed by data validation, payment behavior analysis, baseline forecasting, feature engineering, machine learning models, and eventually an interactive dashboard.
+The project is being developed step-by-step:
+
+1. Financial data generation
+2. Data validation and analysis
+3. Payment behavior analysis
+4. Machine learning for payment-delay prediction
+5. Cash-flow forecasting
+6. Cash shortage detection
+7. Interactive finance dashboard
+
+The current implementation focuses on **customer payment-delay prediction using Machine Learning**.
 
 ---
 
@@ -21,17 +33,17 @@ The system aims to:
 - Analyze customer payment behavior
 - Analyze vendor payment behavior
 - Monitor daily cash position
+- Predict customer payment delays
 - Forecast future cash flow
-- Predict customer payment dates
 - Identify potential cash shortages
-- Provide confidence ranges around forecasts
-- Eventually provide an interactive finance dashboard
+- Provide confidence/uncertainty information
+- Provide an interactive finance dashboard
 
 ---
 
 ## Current Progress
 
-### Completed
+### Day 1 — Data Generation & Database
 
 - [x] Project structure created
 - [x] PostgreSQL database created
@@ -45,28 +57,48 @@ The system aims to:
 - [x] 365 days of cash-balance data generated
 - [x] CSV files generated
 - [x] CSV data imported into PostgreSQL
+
+### Day 2 — Data Analysis & Baseline Prediction
+
 - [x] Data validation completed
+- [x] Missing-value checks completed
+- [x] Duplicate ID checks completed
+- [x] Invoice amount validation completed
+- [x] Payment-delay calculations validated
 - [x] Customer payment behavior analyzed
 - [x] Vendor payment behavior analyzed
-- [x] Customer behavior dataset generated
-- [x] Vendor behavior dataset generated
+- [x] Average payment delay calculated
+- [x] Median payment delay calculated
+- [x] Payment-delay standard deviation calculated
+- [x] Invoice count calculated
 - [x] Baseline payment-date prediction created
-- [x] New-customer fallback implemented
-- [x] Prediction uncertainty classification implemented
-- [x] Baseline evaluated on 700 AR invoices
-- [x] Baseline MAE calculated: **2.33 days**
+- [x] New-customer fallback logic implemented
+- [x] Uncertainty classification implemented
+- [x] Baseline prediction evaluated
 
-### In Progress
+### Day 3 — Machine Learning
 
-- [ ] Feature engineering
-- [ ] Machine learning model
-- [ ] Proper time-based train/test evaluation
-- [ ] Improve payment-date prediction
-- [ ] Cash-flow forecasting
-- [ ] Forecast confidence intervals
-- [ ] Cash shortage detection
-- [ ] Finance dashboard
-- [ ] API integration
+- [x] ML dataset created
+- [x] Time-based train/test split created
+- [x] Data leakage prevention implemented
+- [x] Leakage-free customer behavior features created
+- [x] Linear Regression model trained
+- [x] Linear Regression evaluated
+- [x] Random Forest model trained
+- [x] Feature importance analyzed
+- [x] Improved historical behavior features created
+- [x] Improved Random Forest trained
+- [x] Model performance compared
+- [x] Random Forest hyperparameters tuned
+- [x] Best model configuration selected
+- [x] Final trained model saved
+- [x] Model feature list saved
+- [x] Automatic customer feature generation implemented
+- [x] Payment delay prediction implemented
+- [x] Predicted payment date implemented
+- [x] New-customer prediction handling implemented
+- [x] End-to-end testing completed
+- [x] Prediction results saved
 
 ---
 
@@ -92,25 +124,37 @@ The synthetic dataset contains different payment behavior patterns:
 - `VERY_LATE`
 - `UNPREDICTABLE`
 
-These patterns allow the system to analyze historical payment behavior and eventually provide features for machine learning models.
+These patterns allow the system to analyze differences in payment behavior and provide data for the machine-learning model.
 
 ---
 
-## Payment Behavior Analysis
+## Machine Learning
 
-For each customer and vendor, the system calculates:
+### ML Objective
 
-- Average payment delay
-- Median payment delay
-- Standard deviation of payment delay
-- Number of invoices
+The current ML task is:
 
-Example customer behavior:
+> **Predict how many days after/before the due date a customer is expected to make payment.**
+
+The predicted delay is then converted into an expected payment date.
+
+### Features
+
+The improved Random Forest model uses historical customer behavior and invoice information.
+
+Current features include:
+
+- `amount`
+- `previous_avg_delay`
+- `previous_median_delay`
+- `previous_std_delay`
+- `previous_on_time_ratio`
+- `previous_late_ratio`
+- `days_since_previous_invoice`
+
+### Target
+
+The target variable is:
 
 ```text
-Customer: C047
-
-Average delay:       12.29 days
-Median delay:        12 days
-Standard deviation:  2.22 days
-Invoice count:       21
+payment_delay_days

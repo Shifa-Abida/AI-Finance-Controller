@@ -1,0 +1,8 @@
+feature,importance
+previous_avg_delay,0.5738237528910989
+previous_median_delay,0.1691108637534662
+amount,0.10268047883977652
+previous_std_delay,0.06736079223336498
+days_since_previous_invoice,0.0460936542269446
+previous_on_time_ratio,0.02267365160614406
+previous_late_ratio,0.01825680644920481

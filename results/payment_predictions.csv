@@ -1,0 +1,4 @@
+customer_id,invoice_amount,due_date,previous_invoices,historical_avg_delay,predicted_delay,predicted_payment_date
+C047,300000,2026-09-10,21,12.29,11.1,2026-09-21
+C009,300000,2026-09-10,25,16.08,14.6,2026-09-25
+C999,300000,2026-09-10,0,5.77,0.61,2026-09-11

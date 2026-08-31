@@ -1,0 +1,5 @@
+model,mae_days,improvement_vs_baseline_days,improvement_vs_baseline_percent
+Baseline,2.64,0.0,0.0
+Linear Regression,2.61,0.03000000000000025,1.1363636363636458
+Random Forest,2.61,0.03000000000000025,1.1363636363636458
+Improved Random Forest,2.54,0.10000000000000009,3.7878787878787907

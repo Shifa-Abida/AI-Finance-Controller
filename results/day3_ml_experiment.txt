@@ -1,0 +1,115 @@
+AI FINANCE CONTROLLER
+DAY 3 - ML EXPERIMENT RESULTS
+========================================
+
+Experiment: Customer Payment Delay Prediction
+
+Objective:
+Predict the number of days an invoice takes to be paid
+using historical customer and invoice information.
+
+
+DATASET
+========================================
+
+Total invoices: 700
+
+Training invoices: 560
+Testing invoices: 140
+
+Training period:
+2025-01-01 to 2025-10-18
+
+Testing period:
+2025-10-20 to 2025-12-31
+
+
+FEATURES USED
+========================================
+
+- amount
+- avg_delay
+- median_delay
+- std_delay
+- invoice_count
+
+Target:
+- payment_delay_days
+
+
+DATA LEAKAGE PREVENTION
+========================================
+
+Customer payment behavior features were calculated using
+only payment history available before each invoice.
+
+A time-based train/test split was used so that earlier
+invoices are used for training and later invoices are
+used for testing.
+
+
+BASELINE MODEL
+========================================
+
+Method:
+Customer historical average payment delay
+
+Baseline MAE:
+2.33 days
+
+
+MACHINE LEARNING MODEL
+========================================
+
+Model:
+Linear Regression
+
+Training rows:
+560
+
+Testing rows:
+140
+
+Linear Regression MAE:
+2.61 days
+
+
+INITIAL RESULT
+========================================
+
+Baseline MAE:          2.33 days
+Linear Regression MAE: 2.61 days
+
+Result:
+The baseline currently performs better than the first
+Linear Regression model.
+
+Difference:
+Linear Regression is 0.28 days worse than the baseline.
+
+
+CONCLUSION
+========================================
+
+The first ML model does not currently outperform the
+baseline.
+
+This is not considered a failure. The baseline already
+contains strong information about customer payment
+behavior, particularly the customer's historical average
+payment delay.
+
+Further experiments will test better ML models and
+additional features to determine whether machine learning
+can improve the prediction.
+
+
+NEXT STEPS
+========================================
+
+1. Compare baseline and ML predictions in more detail.
+2. Try a more suitable non-linear ML model.
+3. Investigate feature importance.
+4. Improve feature engineering.
+5. Compare model performance again.
+6. Save the best-performing model.

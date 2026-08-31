@@ -1,0 +1,7 @@
+amount
+previous_avg_delay
+previous_median_delay
+previous_std_delay
+previous_on_time_ratio
+previous_late_ratio
+days_since_previous_invoice
