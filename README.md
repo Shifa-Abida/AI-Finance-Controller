@@ -1,6 +1,6 @@
 # AI Finance Controller
 
-An AI-powered finance controller designed to help businesses understand their cash position and forecast future cash flow using historical financial data.
+An AI-powered finance controller designed to help businesses understand their cash position, predict customer payment behavior, and forecast future cash flow using historical financial data.
 
 > **Project Status: In Development**
 
@@ -8,7 +8,16 @@ An AI-powered finance controller designed to help businesses understand their ca
 
 ## Overview
 
-The AI Finance Controller is a financial forecasting project that combines accounts receivable (AR), accounts payable (AP), customer/vendor payment behavior, and cash-flow data.
+The AI Finance Controller is a financial forecasting project that combines:
+
+- Accounts Receivable (AR)
+- Accounts Payable (AP)
+- Customer payment behavior
+- Vendor payment behavior
+- Machine learning
+- Cash-flow forecasting
+- Cash uncertainty analysis
+- Cash shortage detection
 
 The project is being developed step-by-step:
 
@@ -16,11 +25,11 @@ The project is being developed step-by-step:
 2. Data validation and analysis
 3. Payment behavior analysis
 4. Machine learning for payment-delay prediction
-5. Cash-flow forecasting
-6. Cash shortage detection
+5. AR/AP cash-flow forecasting
+6. Cash uncertainty and shortage detection
 7. Interactive finance dashboard
 
-The current implementation focuses on **customer payment-delay prediction using Machine Learning**.
+The current implementation covers **machine-learning-based payment-delay prediction and cash-flow forecasting with risk analysis**.
 
 ---
 
@@ -34,16 +43,21 @@ The system aims to:
 - Analyze vendor payment behavior
 - Monitor daily cash position
 - Predict customer payment delays
-- Forecast future cash flow
-- Identify potential cash shortages
-- Provide confidence/uncertainty information
+- Predict expected customer payment dates
+- Forecast expected AR inflows
+- Forecast expected AP outflows
+- Forecast future cash balances
+- Generate 30/60/90-day cash forecasts
+- Provide cash uncertainty ranges
+- Detect potential cash shortage periods
+- Classify cash-flow risk
 - Provide an interactive finance dashboard
 
 ---
 
-## Current Progress
+# Current Progress
 
-### Day 1 — Data Generation & Database
+## Day 1 — Data Generation & Database
 
 - [x] Project structure created
 - [x] PostgreSQL database created
@@ -58,7 +72,9 @@ The system aims to:
 - [x] CSV files generated
 - [x] CSV data imported into PostgreSQL
 
-### Day 2 — Data Analysis & Baseline Prediction
+---
+
+## Day 2 — Data Analysis & Baseline Prediction
 
 - [x] Data validation completed
 - [x] Missing-value checks completed
@@ -76,7 +92,11 @@ The system aims to:
 - [x] Uncertainty classification implemented
 - [x] Baseline prediction evaluated
 
-### Day 3 — Machine Learning
+**Baseline MAE: 2.33 days**
+
+---
+
+## Day 3 — Machine Learning
 
 - [x] ML dataset created
 - [x] Time-based train/test split created
@@ -102,7 +122,76 @@ The system aims to:
 
 ---
 
-## Current Dataset
+## Day 4 — Cash Flow Forecasting & Risk Analysis
+
+### AR Cash Inflow Forecasting
+
+- [x] Expected AR inflows calculated
+- [x] ML-predicted customer payment delays used
+- [x] Expected payment dates generated
+- [x] Expected AR inflow dataset created
+- [x] Results saved to `expected_ar_inflows.csv`
+
+### AP Cash Outflow Forecasting
+
+- [x] Historical vendor payment behavior used
+- [x] Expected vendor payment delays calculated
+- [x] Expected payment dates generated
+- [x] Expected AP outflows calculated
+- [x] Results saved to `expected_ap_outflows.csv`
+
+### Daily Cash Flow Forecast
+
+- [x] Daily expected AR inflows calculated
+- [x] Daily expected AP outflows calculated
+- [x] Daily net cash flow calculated
+- [x] Projected cash balance calculated
+- [x] Daily cash forecast generated
+- [x] Results saved to `daily_cash_forecast.csv`
+
+### Forecast Horizons
+
+- [x] 30-day cash forecast calculated
+- [x] 60-day cash forecast calculated
+- [x] 90-day cash forecast calculated
+- [x] Forecast horizon dataset created
+- [x] Results saved to `cash_forecast_horizons.csv`
+
+### Cash Uncertainty Analysis
+
+- [x] AR prediction uncertainty calculated
+- [x] AP historical payment-delay variability calculated
+- [x] Lower cash scenario calculated
+- [x] Base cash scenario calculated
+- [x] Upper cash scenario calculated
+- [x] Cash uncertainty bands generated
+- [x] Results saved to `cash_uncertainty_bands.csv`
+
+### Cash Shortage Detection
+
+- [x] Minimum cash warning threshold defined
+- [x] Critical cash threshold defined
+- [x] Cash risk classification implemented
+- [x] Cash buffer calculated
+- [x] Potential warning periods detected
+- [x] Critical periods detected
+- [x] Minimum projected cash position identified
+- [x] Results saved to `cash_shortage_analysis.csv`
+
+### Final Integration
+
+- [x] Daily cash forecast integrated
+- [x] AR inflows integrated
+- [x] AP outflows integrated
+- [x] Uncertainty bands integrated
+- [x] Cash risk information integrated
+- [x] 30/60/90-day forecasts integrated
+- [x] Final consolidated cash forecast generated
+- [x] Results saved to `final_cash_forecast.csv`
+
+---
+
+# Current Dataset
 
 The project currently uses synthetic financial data.
 
@@ -115,7 +204,9 @@ The project currently uses synthetic financial data.
 | Total Transactions | 1,000 |
 | Daily Cash Balance | 365 days |
 
-### Customer & Vendor Payment Behaviors
+---
+
+## Customer & Vendor Payment Behaviors
 
 The synthetic dataset contains different payment behavior patterns:
 
@@ -124,21 +215,23 @@ The synthetic dataset contains different payment behavior patterns:
 - `VERY_LATE`
 - `UNPREDICTABLE`
 
-These patterns allow the system to analyze differences in payment behavior and provide data for the machine-learning model.
+These patterns allow the system to analyze differences in payment behavior and provide historical information for forecasting.
 
 ---
 
-## Machine Learning
+# Machine Learning
 
-### ML Objective
+## ML Objective
 
 The current ML task is:
 
-> **Predict how many days after/before the due date a customer is expected to make payment.**
+> **Predict how many days after or before the due date a customer is expected to make payment.**
 
 The predicted delay is then converted into an expected payment date.
 
-### Features
+---
+
+## Features
 
 The improved Random Forest model uses historical customer behavior and invoice information.
 
@@ -152,7 +245,9 @@ Current features include:
 - `previous_late_ratio`
 - `days_since_previous_invoice`
 
-### Target
+---
+
+## Target
 
 The target variable is:
 
